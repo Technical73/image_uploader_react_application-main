@@ -1,0 +1,842 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Profile styles start from here*/
+
+/* Profile - container */
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  background: linear-gradient(rgba(249, 250, 251, 1), rgba(210, 214, 219, 1));
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Profile - Card  start */
+.card {
+  width: 55%;
+  max-width: 768px; /* Maximum width for desktop */
+  height: 420px;
+  border: 1px solid rgba(255, 255, 255, 1);
+  background-color: white;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06),
+    0px 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1100px) {
+  .card {
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 95%;
+    height: 428px;
+  }
+}
+
+/* Profile - Card  end */
+
+/* Profile - Cover Image start */
+.cover_img_styles {
+  width: 100%;
+  height: 176px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+/* Profile - Cover Image end */
+
+/* profile -> profile image and details and button  start*/
+
+/* profile  - Image and Update btn start */
+.profile_details_main {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  margin-bottom: 16px;
+  flex-direction: column;
+  gap: 6px;
+  width: 90%;
+  height: 302px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 10px;
+}
+
+.profile_img_update_btn_container {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.avatar_img_style {
+  width: 160px;
+  height: 160px;
+  border: 4px rgba(255, 255, 255, 1);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.update_button_style {
+  width: 151px;
+  height: 44px;
+  border-radius: 4px;
+  border: 0.5px solid rgba(229, 229, 229, 1);
+  padding: 0.5px; /* Padding all sides */
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06),
+    0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+
+  font-style: "Nota Sans";
+  color: rgba(23, 23, 23, 1);
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s ease-out;
+}
+.update_button_style:hover {
+  background-color: rgba(250, 250, 250, 1);
+  color: rgba(10, 10, 10, 1);
+  cursor: pointer;
+}
+.update_button_style:focus {
+  background-color: rgba(250, 250, 250, 1);
+  box-shadow: 0px 0px 0px 4px rgba(68, 76, 231, 0.12);
+  color: rgba(10, 10, 10, 1);
+}
+.update_button_style:disabled {
+  background: var(--colors-neutral-100, rgba(245, 245, 245, 1));
+  color: rgba(163, 163, 163, 1);
+}
+
+@media (max-width: 1100px) {
+  .profile_details_main {
+    width: 95%;
+  }
+
+  .update_button_style {
+    width: 151px;
+    height: 44px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 768px) {
+  .profile_details_main {
+    width: 95%;
+  }
+  .card {
+    height: 432px;
+  }
+  .profile_details_main {
+    height: 332px;
+  }
+
+  .update_button_style {
+    width: 151px;
+    height: 44px;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile_details_main {
+    width: 95%;
+    top: 55%;
+    left: 50%;
+    padding: 0 10px;
+    transform: translate(-50%, -50%);
+  }
+  .avatar_img_style {
+    width: 96px;
+    height: 96px;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 50%;
+  }
+  .update_button_style {
+    width: 128px;
+    height: 36px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+/* profile  - Image and Update btn end */
+
+/* Profile - Name, Bio, Email and Social Media icons start  start*/
+.profile_details_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+.profile_details_container h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(23, 23, 23, 1);
+}
+
+.profile_bio_container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+.username {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(23, 23, 23, 1);
+}
+.dot1 {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(163, 163, 163, 1);
+}
+.dot2 {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(163, 163, 163, 1);
+}
+.position {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(23, 23, 23, 1);
+}
+.at {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(82, 82, 82, 1);
+}
+.he_him {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(82, 82, 82, 1);
+}
+.position_logo_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+.logo_styles {
+  width: 24px;
+  height: 24px;
+}
+.break {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: 767px) {
+  .profile_bio_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-direction: column;
+  }
+  .dot1 {
+    display: none !important;
+  }
+  .break {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile_bio_container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-direction: column;
+  }
+  .dot1 {
+    display: none !important;
+  }
+  .break {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+/* Profile - Name, Bio, Email and Social Media icons start  end*/
+
+/* profile -> profile image and details and button  end*/
+
+/* Crop card full starts */
+
+/* Crop  -> main container styles*/
+.crop_main_container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* crop -> crop_card  starts */
+.crop_card {
+  width: 22%;
+  min-height: 438px;
+  border-radius: 8px;
+  padding: 15px 15px;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.crop_card_content1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crop_card_content1 h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(23, 23, 23, 1);
+  font-style: "Nota Sans";
+}
+.crop_card_content1 button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+}
+.crop_card_content1 button:hover {
+  cursor: pointer;
+}
+.crop_card_content1 button:focus {
+  box-shadow: 0px 0px 0px 4px rgba(68, 76, 231, 0.12);
+}
+.crop_card_content1 button:disabled {
+  background-color: rgba(163, 163, 163, 1);
+}
+.crop_save_button {
+  width: 151px;
+  height: 44px;
+  border-radius: 4px;
+  padding: 0.5px;
+  background-color: rgba(67, 56, 202, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(67, 56, 202, 1);
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  font-style: "Nota Sans";
+  color: rgba(255, 255, 255, 1);
+  font-size: 16px;
+  font-weight: 500;
+  transition: 0.3s ease-out;
+}
+.crop_save_button:hover {
+  background-color: rgba(55, 48, 163, 1);
+  cursor: pointer;
+}
+.crop_save_button:focus {
+  background-color: rgba(55, 48, 163, 1);
+}
+.crop_save_button:disabled {
+  background-color: rgba(245, 245, 245, 1);
+  color: rgba(163, 163, 163, 1);
+}
+
+.crop_box {
+  width: 100%;
+  height: 290px;
+  border: 1px solid black;
+}
+
+.crop_image {
+  width: 100%;
+  height: 290px;
+  object-fit: cover;
+}
+.hidden_image {
+  display: none;
+}
+
+.crop_card_buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 1100px) {
+  .crop_card {
+    width: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .crop_card {
+    width: 50%;
+  }
+}
+@media (min-width: 300px) and (max-width: 480px) {
+  .crop_card {
+    width: 80%;
+  }
+}
+
+/* crop -> crop_card ends */
+
+/* Crop card full ends */
+
+/* Upload Image card styles start from here */
+.upload_card_main {
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* upload card starts */
+.upload_card {
+  width: 36%;
+  min-height: 344px;
+  max-height: 880px;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 15px 15px;
+  gap: 24px;
+}
+
+.upload_heading_style {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 6px;
+}
+.upload_header {
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(23, 23, 23, 1);
+  font-style: "Noto Sans";
+}
+
+.upload_sub_header {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(82, 82, 82, 1);
+}
+.dnd_card {
+  width: 100%;
+  height: 190px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 4px;
+  gap: 24px;
+  background-color: rgba(250, 250, 250, 1);
+  transition: 0.1s ease-in;
+  border: 1px solid var(--colors-neutral-200, rgba(229, 229, 229, 1));
+}
+.upload_header_error {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(220, 38, 38, 1);
+}
+.upload_sub_header_error {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(82, 82, 82, 1);
+}
+.dnd_card:hover {
+  border: 1px solid var(--colors-indigo-600, rgba(79, 70, 229, 1));
+  cursor: pointer;
+}
+.cloud_icon_container {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 1);
+}
+.cloud_icon_styles {
+  width: 24px;
+  height: 24px;
+}
+.dnd_details_main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.upload_image_card_status_main {
+  width: 100%;
+  height: 271px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-direction: column;
+  gap: 8px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.upload_image_card_status_main::-webkit-scrollbar {
+  width: 2px;
+}
+
+.upload_image_card_status_main::-webkit-scrollbar-track {
+  background: #ff0000;
+}
+
+.upload_image_card_status_main::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 4px;
+}
+
+.upload_image_card_status_main::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+
+.upload_image_card_status_main::-webkit-scrollbar-button {
+  background-color: #ff0000;
+  height: 16px;
+}
+
+.upload_image_card_status_main::-webkit-scrollbar-button:active {
+  background-color: #ff0000;
+}
+
+.upload_image_card_status_main {
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff #ffffff;
+}
+.upload_image_status_card {
+  width: 100%;
+  height: 85px;
+  gap: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+}
+.upload_image_status_style {
+  width: 80px;
+  height: 85px;
+  border-radius: 6.81px;
+  opacity: 0px;
+}
+.upload_image_status_card_content2 {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.upload_image_status_card_content2_1 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+.upload_image_status_card_content2_1_1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+}
+.upload_image_status_card_content2_1_1_1 {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(23, 23, 23, 1);
+}
+.upload_image_status_card_content2_1_1_2 {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(82, 82, 82, 1);
+}
+.close_icon2 {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.progress_bar_main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.progress_bar {
+  width: 400px;
+  height: 6px;
+  border-radius: 10px;
+  background-color: rgba(229, 231, 235, 1);
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.progress_bar_fill {
+  height: 100%;
+  background-color: rgba(67, 56, 202, 1);
+  transition: width 0.2s ease-in-out;
+}
+
+.percentage_value {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(82, 82, 82, 1);
+}
+
+.error-message_container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.error_message {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(220, 38, 38, 1);
+  flex-wrap: wrap;
+}
+.cancel_image_button {
+  width: 256px;
+  height: 44px;
+  padding: 0.5px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+  border: none;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid var(--colors-neutral-200, rgba(229, 229, 229, 1));
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(23, 23, 23, 1);
+}
+.disable-button {
+  width: 256px;
+  height: 44px;
+  padding: 0.5px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(245, 245, 245, 1);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+  border: none;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid var(--colors-neutral-200, rgba(229, 229, 229, 1));
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(163, 163, 163, 1);
+}
+.disable-button:disabled {
+  cursor: none;
+}
+.cancel_image_button:hover {
+  cursor: pointer;
+}
+.select_image_button {
+  width: 256px;
+  height: 44px;
+  padding: 0.5px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--colors-indigo-700, rgba(67, 56, 202, 1));
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+  border: none;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+.select_image_button {
+  cursor: pointer;
+}
+.delete_crop_main {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 6px;
+}
+.crop_button {
+  background-color: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+.crop_button:hover {
+  cursor: pointer;
+}
+.dot {
+  color: rgba(82, 82, 82, 1);
+  font-size: 12px;
+  font-weight: 400;
+}
+.delete_button {
+  background-color: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+.delete_button:hover {
+  cursor: pointer;
+}
+.progress_bar_hidden {
+  display: none;
+}
+.progress_bar_show {
+  display: block;
+}
+.common_icon {
+  width: 24px;
+  height: 24px;
+}
+.custom_radio_button {
+  background-color: #ff0000;
+}
+.checkbox-round {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%;
+  border: 2px solid rgba(67, 56, 202, 1);
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox-round:checked::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(67, 56, 202, 1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1100px) {
+  .upload_card {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .upload_card {
+    width: 80%;
+  }
+
+  .dnd_details_main {
+    text-align: center;
+  }
+  .error_message {
+    font-size: 8px;
+  }
+  .upload_image_status_card_content2_1_1_1 {
+    font-size: 8px;
+  }
+  .upload_image_card_status_main {
+    height: 85px;
+  }
+  .dnd_card {
+    height: 120px;
+  }
+}
+/* upload card ends */
+
+/* Upload Image card styles end over here */
