@@ -26,4 +26,4 @@ mongoose
     process.exit(1);
   });
 
-module.exports = imageRoutes;
+module.exports = app;
