@@ -99,6 +99,10 @@ router.delete("/upload/:id", async (req, res) => {
   }
 });
 
+router.get("/getimages", (req, res) => {
+  res.status(200).json({ message: "hello word" });
+});
+
 router.get("/upload/getimage/:id", async (req, res) => {
   try {
     const { id } = req.params;
