@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -10,10 +11,12 @@ app.use(express.static("public"));
 app.use(cors());
 app.use("/images", imageRoutes);
 
+const dbUrl = `${process.env.DATABASE_URL}/images`;
+
 mongoose
-  .connect("mongodb://localhost:27017/images")
+  .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    app.listen(8000, () => {
+    app.listen(process.env.PORT, () => {
       console.log("server is connected");
     });
     console.log("database is connected");
