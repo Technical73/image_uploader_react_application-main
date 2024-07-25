@@ -85,7 +85,7 @@ const Upload_Image: React.FC = () => {
     });
 
     try {
-      const baseUrl = process.env.REACT_SERVER_URL;
+      const baseUrl = process.env.REACT_APP_SERVER_URL;
       const response = await axios.post(`${baseUrl}/images/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",

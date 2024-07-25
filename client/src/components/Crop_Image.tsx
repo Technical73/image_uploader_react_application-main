@@ -24,7 +24,7 @@ const Crop_Image = () => {
   };
 
   useEffect(() => {
-    const baseUrl = process.env.REACT_SERVER_URL;
+    const baseUrl = process.env.REACT_APP_SERVER_URL;
     const fetchData = async () => {
       try {
         const response = await axios.get(
