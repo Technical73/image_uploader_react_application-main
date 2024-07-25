@@ -85,28 +85,31 @@ const Upload_Image: React.FC = () => {
     });
 
     try {
-      const baseUrl = process.env.REACT_APP_SERVER_URL;
-      const response = await axios.post(`${baseUrl}/images/upload`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        onUploadProgress: (progressEvent) => {
-          const total = progressEvent.total || 1;
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / total
-          );
-
-          newImages.forEach((image) => {
-            setUploadedImages((prevImages) =>
-              prevImages.map((prevImage) =>
-                prevImage.name === image.name
-                  ? { ...prevImage, progress: percentCompleted }
-                  : prevImage
-              )
+      const response = await axios.post(
+        `https://image-uploader-react-application-server.vercel.app/images/upload`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          onUploadProgress: (progressEvent) => {
+            const total = progressEvent.total || 1;
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / total
             );
-          });
-        },
-      });
+
+            newImages.forEach((image) => {
+              setUploadedImages((prevImages) =>
+                prevImages.map((prevImage) =>
+                  prevImage.name === image.name
+                    ? { ...prevImage, progress: percentCompleted }
+                    : prevImage
+                )
+              );
+            });
+          },
+        }
+      );
 
       const { imageData } = response.data;
       setUploadedImages((prevImages) =>
