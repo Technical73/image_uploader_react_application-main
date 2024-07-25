@@ -60,6 +60,7 @@ const Upload_Image: React.FC = () => {
   };
 
   const handleUpload = async (files: File[]) => {
+    let baseUrl = process.env.REACT_APP_SERVER_URL;
     const formData = new FormData();
     files.forEach((file) => {
       formData.append("file", file);
@@ -85,7 +86,6 @@ const Upload_Image: React.FC = () => {
     });
 
     try {
-      let baseUrl = process.env.REACT_APP_SERVER_URL;
       const response = await axios.post(`${baseUrl}/images/upload`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
