@@ -30,7 +30,6 @@ const Crop_Image = () => {
         const response = await axios.get(
           `${baseUrl}/images/upload/getimage/${cropId}`
         );
-        console.log("Server response:", response.data.image.image_name);
         setImageURL(response.data.image.image_name);
       } catch (error) {
         console.log(error);
