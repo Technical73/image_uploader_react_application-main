@@ -99,8 +99,16 @@ router.delete("/upload/:id", async (req, res) => {
   }
 });
 
-router.get("/getimages", (req, res) => {
-  res.status(200).json({ message: "hello word" });
+router.get("/getimages", async (req, res) => {
+  try {
+    const data = await ImagesData.find();
+    res
+      .status(200)
+      .json({ message: "Image retrieved successfully", image: data });
+  } catch (error) {
+    console.error("Error fetching image:", error);
+    res.status(500).json({ message: "Error fetching image" });
+  }
 });
 
 router.get("/upload/getimage/:id", async (req, res) => {
