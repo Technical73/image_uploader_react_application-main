@@ -24,10 +24,11 @@ const Crop_Image = () => {
   };
 
   useEffect(() => {
+    const baseUrl = process.env.REACT_SERVER_URL;
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8000/images/upload/getimage/${cropId}`
+          `${baseUrl}/images/upload/getimage/${cropId}`
         );
         console.log("Server response:", response.data.image.image_name);
         setImageURL(response.data.image.image_name);

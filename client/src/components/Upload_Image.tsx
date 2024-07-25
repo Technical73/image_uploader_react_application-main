@@ -85,31 +85,28 @@ const Upload_Image: React.FC = () => {
     });
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/images/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          onUploadProgress: (progressEvent) => {
-            const total = progressEvent.total || 1;
-            const percentCompleted = Math.round(
-              (progressEvent.loaded * 100) / total
-            );
+      const baseUrl = process.env.REACT_SERVER_URL;
+      const response = await axios.post(`${baseUrl}/images/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        onUploadProgress: (progressEvent) => {
+          const total = progressEvent.total || 1;
+          const percentCompleted = Math.round(
+            (progressEvent.loaded * 100) / total
+          );
 
-            newImages.forEach((image) => {
-              setUploadedImages((prevImages) =>
-                prevImages.map((prevImage) =>
-                  prevImage.name === image.name
-                    ? { ...prevImage, progress: percentCompleted }
-                    : prevImage
-                )
-              );
-            });
-          },
-        }
-      );
+          newImages.forEach((image) => {
+            setUploadedImages((prevImages) =>
+              prevImages.map((prevImage) =>
+                prevImage.name === image.name
+                  ? { ...prevImage, progress: percentCompleted }
+                  : prevImage
+              )
+            );
+          });
+        },
+      });
 
       const { imageData } = response.data;
       setUploadedImages((prevImages) =>
