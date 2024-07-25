@@ -61,7 +61,7 @@ router.post(
       };
 
       let imageData = await ImagesData.create(newImage);
-      console.log(req.file);
+
       return res
         .status(200)
         .json({ message: "Image uploaded successfully", imageData });

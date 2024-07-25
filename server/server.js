@@ -8,7 +8,13 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://image-uploader-react-application-client.vercel.app", // replace with your client URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use("/images", imageRoutes);
 app.use("/", (req, res) => {
   res.status(200).json({ message: "hello world" });
