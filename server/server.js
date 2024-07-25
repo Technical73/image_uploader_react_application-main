@@ -11,11 +11,12 @@ app.use(express.static("public"));
 app.use(cors());
 app.use("/images", imageRoutes);
 
+let dbUrl = process.env.DB_CONNECTION_URL;
 mongoose
-  .connect(
-    "mongodb+srv://jagadishwaranvr345:uUpCy6O48ZmJQjvz@imageupload.w0ns7je.mongodb.net/images?retryWrites=true&w=majority&appName=imageupload",
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(dbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     app.listen(8000, () => {
       console.log("server is connected");
