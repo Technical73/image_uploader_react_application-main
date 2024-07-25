@@ -111,10 +111,6 @@ router.get("/getimages", async (req, res) => {
   }
 });
 
-router.get("/", (req, res) => {
-  res.status.json({ message: "hello" });
-});
-
 router.get("/upload/getimage/:id", async (req, res) => {
   try {
     const { id } = req.params;
