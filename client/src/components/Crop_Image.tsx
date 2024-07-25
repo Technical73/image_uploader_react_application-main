@@ -26,8 +26,9 @@ const Crop_Image = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        let baseUrl = process.env.REACT_APP_SERVER_URL;
         const response = await axios.get(
-          `https://image-uploader-react-application-server.vercel.app/images/upload/getimage/${cropId}`
+          `${baseUrl}/images/upload/getimage/${cropId}`
         );
         console.log("Server response:", response.data.image.image_name);
         setImageURL(response.data.image.image_name);
