@@ -104,10 +104,10 @@ router.get("/getimages", async (req, res) => {
     const data = await ImagesData.find();
     res
       .status(200)
-      .json({ message: "Image retrieved successfully", image: data });
+      .json({ message: "Images retrieved successfully", image: data });
   } catch (error) {
-    console.error("Error fetching image:", error);
-    res.status(500).json({ message: "Error fetching image" });
+    console.error("Error fetching images:", error);
+    res.status(500).json({ message: "Error fetching images" });
   }
 });
 
