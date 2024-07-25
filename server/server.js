@@ -11,12 +11,13 @@ app.use(express.static("public"));
 app.use(cors());
 app.use("/images", imageRoutes);
 
-const dbUrl = `${process.env.DATABASE_URL}/images`;
-
 mongoose
-  .connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(
+    "mongodb+srv://jagadishwaranvr345:uUpCy6O48ZmJQjvz@imageupload.w0ns7je.mongodb.net/images?retryWrites=true&w=majority&appName=imageupload",
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
   .then(() => {
-    app.listen(process.env.PORT, () => {
+    app.listen(8000, () => {
       console.log("server is connected");
     });
     console.log("database is connected");
@@ -25,3 +26,5 @@ mongoose
     console.log("Error connecting to the database", err);
     process.exit(1);
   });
+
+module.exports = app;
