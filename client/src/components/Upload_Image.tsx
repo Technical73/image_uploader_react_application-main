@@ -59,83 +59,106 @@ const Upload_Image: React.FC = () => {
     }
   };
 
-const handleUpload = async (files: File[]) => {
-  const formData = new FormData();
-  files.forEach((file) => {
-    formData.append("file", file);
-  });
+  const handleUpload = async (files: File[]) => {
+    const formData = new FormData();
+    files.forEach((file) => {
+      formData.append("file", file);
+    });
 
-  try {
-    const response = await axios.post(
-      "http://localhost:8000/images/upload",
-      formData,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        onUploadProgress: (progressEvent) => {
-          const total = progressEvent.total || 1;
-          const percentCompleted = Math.round(
-            (progressEvent.loaded * 100) / total
-          );
-
-          newImages.forEach((image) => {
-            setUploadedImages((prevImages) =>
-              prevImages.map((prevImage) =>
-                prevImage.name === image.name
-                  ? { ...prevImage, progress: percentCompleted }
-                  : prevImage
-              )
-            );
-          });
-        },
-      }
-    );
-
-    const { imageData } = response.data;
-    setUploadedImages((prevImages) =>
-      prevImages.map((image) => {
-        if (image.name === newImages[0].name) {
-          return { ...image, id: imageData._id, url: imageData.url };
+    const newImages: UploadedImage[] = [];
+    files.forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target?.result) {
+          const newImage: UploadedImage = {
+            id: "",
+            name: file.name,
+            size: `${(file.size / 1024).toFixed(2)} KB`,
+            url: e.target?.result as string,
+            progress: 0,
+          };
+          setUploadedImages((prevImages) => [...prevImages, newImage]);
+          newImages.push(newImage);
         }
-        return image;
-      })
-    );
-    setTimeout(() => {
-      setProgressState(false);
-    }, 5000);
-    console.log(response.data, "response");
+      };
+      reader.readAsDataURL(file);
+    });
 
-    if (response.data.message === "") setErrorMessage(null);
-    setProgressState(false);
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      console.error("Axios error response:", error.response);
-      if (error.response?.status === 400) {
-        setLimitmessage(error.response?.data.message || "Image limit reached.");
-        setErrorMessage(error.response?.data.message || "Image limit reached.");
-      } else if (error.message === "Network Error") {
-        setErrorMessage(
-          "An error occurred during the upload. Please check your network connection and try again."
-        );
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/images/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          onUploadProgress: (progressEvent) => {
+            const total = progressEvent.total || 1;
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / total
+            );
+
+            newImages.forEach((image) => {
+              setUploadedImages((prevImages) =>
+                prevImages.map((prevImage) =>
+                  prevImage.name === image.name
+                    ? { ...prevImage, progress: percentCompleted }
+                    : prevImage
+                )
+              );
+            });
+          },
+        }
+      );
+
+      const { imageData } = response.data;
+      setUploadedImages((prevImages) =>
+        prevImages.map((image) => {
+          if (image.name === newImages[0].name) {
+            return { ...image, id: imageData._id };
+          }
+          return image;
+        })
+      );
+      setTimeout(() => {
         setProgressState(false);
+      }, 5000);
+      console.log(response.data, "response");
+
+      if (response.data.message === "") setErrorMessage(null);
+      setProgressState(false);
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error("Axios error response:", error.response);
+        if (error.response?.status === 400) {
+          setLimitmessage(
+            error.response?.data.message || "Image limit reached."
+          );
+          setErrorMessage(
+            error.response?.data.message || "Image limit reached."
+          );
+        } else if (error.message === "Network Error") {
+          setErrorMessage(
+            "An error occurred during the upload. Please check your network connection and try again."
+          );
+          setProgressState(false);
+        } else {
+          console.error("Axios error:", error.response?.data);
+          setErrorMessage(
+            error.response?.data.message ||
+              "An unexpected error occurred during the upload. Please contact support if the issue persists."
+          );
+          setProgressState(false);
+        }
       } else {
-        console.error("Axios error:", error.response?.data);
+        console.error("Unexpected error:", error);
         setErrorMessage(
-          error.response?.data.message ||
-            "An unexpected error occurred during the upload. Please contact support if the issue persists."
+          "An unexpected error occurred during the upload. Please contact support if the issue persists."
         );
         setProgressState(false);
       }
-    } else {
-      console.error("Unexpected error:", error);
-      setErrorMessage(
-        "An unexpected error occurred during the upload. Please contact support if the issue persists."
-      );
-      setProgressState(false);
     }
-  }
-};
+  };
 
   const handleDelete = async (id: string) => {
     try {
