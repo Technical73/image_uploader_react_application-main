@@ -25,5 +25,3 @@ mongoose
     console.log("Error connecting to the database", err);
     process.exit(1);
   });
-
-module.exports = app;
