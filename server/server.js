@@ -10,6 +10,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(cors());
 app.use("/images", imageRoutes);
+app.use("/", (req, res) => {
+  res.status(200).json({ message: "hello world" });
+});
 
 let dbUrl = process.env.DB_CONNECTION_URL;
 mongoose
